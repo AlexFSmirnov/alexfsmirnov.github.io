@@ -2,14 +2,19 @@
 <HTML>
 <HEAD>
 	<meta charset="utf-8">
-	<TITLE>Заголовок</TITLE>
+	<TITLE>The Game of Life</TITLE>
 	<style type="text/css">
       canvas { border: 1px solid black; }
+      body { margin: 10; }
     </style>
 </HEAD>
 
 <BODY>
-	<canvas id="canvas" width="800" height="600" />
+	<script>
+		var WIND_W = document.documentElement.clientWidth - 22;
+		var WIND_H = document.documentElement.clientHeight - 22;
+		document.write('<canvas id="canvas" width="' + WIND_W + '" height="' + WIND_H + '" />');
+	</script>
 </BODY>
 
 <script src="script.js"></script>

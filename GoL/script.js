@@ -74,10 +74,6 @@ function updateDisplay() {
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-var CELL_SIDE = 10;
-var CELL_H = Math.ceil(WIND_H / CELL_SIDE);
-var CELL_W = Math.ceil(WIND_W / CELL_SIDE);
-
 var cells_display = new Array(CELL_H);
 var cells_update = new Array(CELL_H);
 var templine = Array(CELL_W);

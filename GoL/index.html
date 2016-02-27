@@ -11,8 +11,17 @@
 
 <BODY>
 	<script>
+		var CELL_SIDE = 10;
+
 		var WIND_W = document.documentElement.clientWidth - 22;
 		var WIND_H = document.documentElement.clientHeight - 22;
+
+		var CELL_H = Math.floor(WIND_H / CELL_SIDE);
+		var CELL_W = Math.floor(WIND_W / CELL_SIDE);
+
+		var WIND_W = CELL_W * CELL_SIDE;
+		var WIND_H = CELL_H * CELL_SIDE;
+		
 		document.write('<canvas id="canvas" width="' + WIND_W + '" height="' + WIND_H + '" />');
 	</script>
 </BODY>

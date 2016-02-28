@@ -69,6 +69,37 @@ function updateDisplay() {
 	taw = setTimeout('updateCells()',10);
 }
 
+function getQueryParams(qs) {
+    qs = qs.split("+").join(" ");
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])]
+            = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
+
+var $_GET = getQueryParams(document.location.search);
+
+var WIND_W = $_GET['w'];     //
+var WIND_H = $_GET['h'];     // Trying to get sizes from the adress bar
+var CELL_SIDE = $_GET['c'];  // 
+
+if (!CELL_SIDE) { CELL_SIDE = 10;}                               //    
+if (!WIND_W) { WIND_W = document.documentElement.clientWidth;}   // If there is no any variables in the adress bar setting them to default values 
+if (!WIND_H) { WIND_H = document.documentElement.clientHeight;}  // 
+
+var CELL_H = Math.floor(WIND_H / CELL_SIDE);
+var CELL_W = Math.floor(WIND_W / CELL_SIDE);
+
+var WIND_W = CELL_W * CELL_SIDE;
+var WIND_H = CELL_H * CELL_SIDE;
+
+document.write('<canvas id="canvas" width="' + WIND_W + '" height="' + WIND_H + '" />');  //Creating the field
 
 
 var canvas = document.getElementById('canvas');

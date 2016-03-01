@@ -13,7 +13,7 @@ function drawCell(x, y, state) {
 
 	if (state) ctx.fillStyle = "rgb(0,255,0)";
 	else ctx.fillStyle = "rgb(150,150,150)";
-	ctx.fillRect(x1 + X_OFFSET + 2, y1 + Y_OFFSET + 2, CELL_SIDE - 4, CELL_SIDE - 4);  // And this is the inner part of the cell
+	ctx.fillRect(x1 + X_OFFSET + BORDER_THICKNESS, y1 + Y_OFFSET + BORDER_THICKNESS, CELL_SIDE - 2 * BORDER_THICKNESS, CELL_SIDE - 2 * BORDER_THICKNESS);  // And this is the inner part of the cell
 }
 
 
@@ -101,6 +101,9 @@ var WIND_H = CELL_H * CELL_SIDE;
 
 var X_OFFSET = (document.documentElement.clientWidth - WIND_W) / 2;   // This is thw offset of the field, so that it is displayed on the centre of the screen
 var Y_OFFSET = (document.documentElement.clientHeight - WIND_H) / 2;  //
+
+var BORDER_THICKNESS = Math.floor(CELL_SIDE / 5);
+
 
 document.write('<canvas id="canvas" width="' + document.documentElement.clientWidth + '" height="' + document.documentElement.clientHeight + '" />');  //Creating the field
 

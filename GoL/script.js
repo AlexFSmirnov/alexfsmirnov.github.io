@@ -9,11 +9,11 @@ function drawCell(x, y, state) {
 
 	if (state) ctx.fillStyle = "rgb(0,155,0)";
 	else ctx.fillStyle = "rgb(50,50,50)";
-	ctx.fillRect(x1, y1, CELL_SIDE, CELL_SIDE);  //This is going to be the outline of the cell (the darker one)
+	ctx.fillRect(x1 + X_OFFSET, y1 + Y_OFFSET, CELL_SIDE, CELL_SIDE);  //This is going to be the outline of the cell (the darker one)
 
 	if (state) ctx.fillStyle = "rgb(0,255,0)";
 	else ctx.fillStyle = "rgb(150,150,150)";
-	ctx.fillRect(x1 + 2, y1 + 2, CELL_SIDE - 4, CELL_SIDE - 4);  // And this is the inner part of the cell
+	ctx.fillRect(x1 + X_OFFSET + 2, y1 + Y_OFFSET + 2, CELL_SIDE - 4, CELL_SIDE - 4);  // And this is the inner part of the cell
 }
 
 
@@ -99,11 +99,17 @@ var CELL_W = Math.floor(WIND_W / CELL_SIDE);
 var WIND_W = CELL_W * CELL_SIDE;
 var WIND_H = CELL_H * CELL_SIDE;
 
-document.write('<canvas id="canvas" width="' + WIND_W + '" height="' + WIND_H + '" />');  //Creating the field
+var X_OFFSET = (document.documentElement.clientWidth - WIND_W) / 2;   // This is thw offset of the field, so that it is displayed on the centre of the screen
+var Y_OFFSET = (document.documentElement.clientHeight - WIND_H) / 2;  //
 
+document.write('<canvas id="canvas" width="' + document.documentElement.clientWidth + '" height="' + document.documentElement.clientHeight + '" />');  //Creating the field
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
+
+
+ctx.fillStyle = "rgb(25,25,25)";                                                                  // Drawing background
+ctx.fillRect(0, 0, document.documentElement.clientWidth, document.documentElement.clientHeight);  //
 
 var cells_display = new Array(CELL_H);
 var cells_update = new Array(CELL_H);
